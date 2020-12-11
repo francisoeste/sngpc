@@ -1,6 +1,6 @@
 <?php
 
-spl_autoload_register(function($className)) {
+spl_autoload_register(function($className) {
 
     $fileName = "class".DIRECTORY_SEPARATOR.$className.".php";
 
