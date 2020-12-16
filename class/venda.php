@@ -119,7 +119,7 @@ class itemVenda extends venda {
     private $unidademedida;
     private $usoprolongado;
     private $venda = array();
-    private $valuess = array();
+    
 
     public function getCodVenda () {
 
@@ -198,9 +198,11 @@ class itemVenda extends venda {
     }
     
     public function setVenda($value) {
-
-        $this->venda = $value;
-
+        array_push($value, array(
+            $this->venda = $value
+        ));
+        
+       //print_r($value);
     }
 
     public function __construct($codigo1, $codigo2) {
@@ -215,9 +217,9 @@ class itemVenda extends venda {
         'codigo2'=>$codigo2
 
      ));
-
+        
         $this->setVenda($vendas);
-    
+        //print_r(count($vendas));
         //$this->insertVenda($vendas);
  
     }
@@ -227,10 +229,10 @@ class itemVenda extends venda {
     function insertVenda() {
 
         $vend = $this->getVenda();
-        print_r($vend);
+       // print_r(count($vend));
         foreach($vend as $vendas ){
 
-            print_r($vendas);
+            //print_r($vendas);
         }
         
     }
