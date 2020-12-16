@@ -118,7 +118,8 @@ class itemVenda extends venda {
     private $lote;
     private $unidademedida;
     private $usoprolongado;
-    
+    private $venda = array();
+    private $valuess = array();
 
     public function getCodVenda () {
 
@@ -191,27 +192,43 @@ class itemVenda extends venda {
         $this->usoprolongado = $value;
 
     }
+
+    public function getVenda():array {
+        return $this->venda;
+    }
     
+    public function setVenda($value) {
+
+        $this->venda = $value;
+
+    }
 
     public function __construct($codigo1, $codigo2) {
         $this->setCodigo($codigo1);
         $this->setCodReceituario($codigo2);
-       $venda = array();
-        echo $codigo1, $codigo2;
-
-       array_push($venda, array(
+       
+        //echo $codigo1, $codigo2;
+        $vendas = $this->venda;
+        
+       array_push($vendas, array(
         'codigo1'=>$codigo1,
         'codigo2'=>$codigo2
 
      ));
 
-        $this->insertVenda($venda);
+        $this->setVenda($vendas);
+    
+        //$this->insertVenda($vendas);
  
     }
 
-    function insertVenda($venda) {
+    
 
-        foreach($venda as $vendas ){
+    function insertVenda() {
+
+        $vend = $this->getVenda();
+        print_r($vend);
+        foreach($vend as $vendas ){
 
             print_r($vendas);
         }
