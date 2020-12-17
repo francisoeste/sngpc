@@ -193,16 +193,16 @@ class itemVenda extends venda {
 
     }
 
-    public function getVenda():array {
+    public function getVenda() {
+      
         return $this->venda;
+    
     }
     
-    public function setVenda($value) {
-        array_push($value, array(
-            $this->venda = $value
-        ));
+    public function setVenda($valor) {
         
-       //print_r($value);
+        $this->venda = $valor;
+        //print_r($valor);
     }
 
     public function __construct($codigo1, $codigo2) {
@@ -210,29 +210,30 @@ class itemVenda extends venda {
         $this->setCodReceituario($codigo2);
        
         //echo $codigo1, $codigo2;
-        $vendas = $this->venda;
+        $vendas = array();
         
        array_push($vendas, array(
         'codigo1'=>$codigo1,
         'codigo2'=>$codigo2
 
      ));
-        
-        $this->setVenda($vendas);
+
+        //$this->setVenda($vendas);
         //print_r(count($vendas));
-        //$this->insertVenda($vendas);
- 
+        $this->setVenda($vendas);
+
     }
 
     
 
-    function insertVenda() {
+    function insertVenda($value) {
 
-        $vend = $this->getVenda();
-       // print_r(count($vend));
-        foreach($vend as $vendas ){
+        //$vend = $this->getVenda();
+        //print_r(count($value));
+        foreach($value as $vendas ){
 
             //print_r($vendas);
+            $this->setVenda($vendas);
         }
         
     }
